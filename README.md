@@ -8,8 +8,11 @@
 - Docker
 ## Using Docker:
 
+Download this image from S3 bucket (URL on the in the project description)
+
+Then execute
 ```bash
-docker build -t <docker-username>/docker_auth_server_ist .
+docker load --input oauth_idp.tar
 ```
 
 Then run the container
