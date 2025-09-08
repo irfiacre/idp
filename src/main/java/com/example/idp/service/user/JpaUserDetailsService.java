@@ -1,4 +1,4 @@
-package com.example.idp.service.resourceowner;
+package com.example.idp.service.user;
 
 import lombok.RequiredArgsConstructor;
 import com.example.idp.adapter.UserDetailsAdapter;

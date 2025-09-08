@@ -1,4 +1,4 @@
-package com.example.idp.service.resourceowner;
+package com.example.idp.service.user;
 import lombok.RequiredArgsConstructor;
 import com.example.idp.entity.User;
 import com.example.idp.repository.UserRepository;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class ResourceOwnerService {
+public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public void createResourceOwner(UserRegistrationRequest request) {
+    public void createUser(UserRegistrationRequest request) {
         User user = User.builder()
                 .firstName(request.firstName())
                 .lastName(request.lastName())
