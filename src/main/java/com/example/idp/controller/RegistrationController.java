@@ -1,6 +1,5 @@
 package com.example.idp.controller;
 
-import com.example.idp.entity.Key;
 import com.example.idp.service.key.KeyService;
 import lombok.RequiredArgsConstructor;
 import com.example.idp.requests.ClientRegistrationRequest;
@@ -10,9 +9,6 @@ import com.example.idp.service.user.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 
 @RestController

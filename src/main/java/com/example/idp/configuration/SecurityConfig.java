@@ -48,11 +48,11 @@ public class SecurityConfig {
         httpSecurity
                 .userDetailsService(userDetailsService)
                 .csrf(csrf ->
-                        csrf.ignoringRequestMatchers("/registration/**", "/login", "/key/**", "/signin")
+                        csrf.ignoringRequestMatchers("/registration/**", "/login", "/public/**", "/signin")
                 )
                 .authorizeHttpRequests(authorize ->
                         authorize
-                                .requestMatchers("/registration/**", "/key/**", "/signin").permitAll()
+                                .requestMatchers("/registration/**", "/public/**", "/signin").permitAll()
                                 .requestMatchers("/login", "/error").permitAll()
                                 .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
                                 .anyRequest().authenticated()
