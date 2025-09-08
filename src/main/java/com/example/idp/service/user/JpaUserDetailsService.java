@@ -17,11 +17,14 @@ public class JpaUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
-        if(user==null){
-            throw  new UsernameNotFoundException("user not found");
-        }
-        return  new UserDetailsAdapter(user);
 
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+        if (!user.getVerified()) {
+            throw new UsernameNotFoundException("User's email is not verified");
+        }
+        return new UserDetailsAdapter(user);
     }
 }
 

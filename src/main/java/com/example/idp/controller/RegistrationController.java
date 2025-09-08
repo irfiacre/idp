@@ -1,5 +1,7 @@
 package com.example.idp.controller;
 
+import com.example.idp.entity.User;
+import com.example.idp.requests.UserVerificationRequest;
 import com.example.idp.service.key.KeyService;
 import lombok.RequiredArgsConstructor;
 import com.example.idp.requests.ClientRegistrationRequest;
@@ -20,9 +22,10 @@ public class RegistrationController {
     private final KeyService keyService;
 
     @PostMapping("/user")
-    public ResponseEntity<Void> addUsers(@RequestBody UserRegistrationRequest request) {
-        userService.createUser(request);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<?> addUsers(@RequestBody UserRegistrationRequest request) {
+        User user = userService.createUser(request);
+
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @PostMapping("/client")
@@ -31,4 +34,10 @@ public class RegistrationController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PostMapping("/verify_user")
+    public ResponseEntity<?> verifyUser(@RequestBody UserVerificationRequest request) {
+        User user = userService.verifyUser(request);
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }

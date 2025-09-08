@@ -34,6 +34,12 @@ public class User {
     @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    @Column()
+    private Boolean verified = false;
+
+    @Column(nullable = false)
+    private Integer verificationCode;
+
 }
 
 
