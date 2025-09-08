@@ -5,7 +5,14 @@
 ### 1. Prerequisites
 
 - Java 21 or higher
-- Docker and Docker Compose
+- Docker
+## Using Docker:
+
+```bash
+docker build -t <docker-username>/docker_auth_server_ist .
+```
+
+Then run the container
 
 ### 2. Environment Configuration
 
@@ -128,8 +135,3 @@ The server will respond with a JSON payload containing the tokens:
     "expires_in": 299
 }
 ```
-
-- **access_token**: The client can now use this Bearer token to make authenticated requests to a resource server.
-- **id_token**: This is the OIDC token. You can decode this JWT (e.g., at jwt.io) to see the user's identity information (like `sub` for subject, which is `john.doe`).
-
-**You have successfully completed a full, secure OAuth 2.0 and OIDC flow!**
