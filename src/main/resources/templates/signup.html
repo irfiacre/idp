@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Injira Signup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+<!--    <img th:src="@{/public/images/logo.png}" width="80" height="80"/>-->
+    <br />
+    <div class="tabs">
+        <h1 id="actionTitle">Sign Up</h1>
+    </div>
+    <form id="signupForm" class="form active" method="POST" action="/signup">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" name="firstName" placeholder="First name" required />
+
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" name="lastName" placeholder="Last name" required />
+
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" placeholder="Enter your email" required />
+
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" placeholder="Create a password" required />
+
+        <button type="submit">Sign Up</button>
+        <p class="switch-text">
+            Already have an account? <a href="/login" id="switchToLogin">Login</a>
+        </p>
+    </form>
+
+    <div id="status">
+        <p th:if="${successMessage}" th:text="${successMessage}" style="color: green;"></p>
+        <p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></p>
+    </div>
+</div>
+
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

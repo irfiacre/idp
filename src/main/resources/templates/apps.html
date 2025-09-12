@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Injira Add Client</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <br />
+    <div class="tabs">
+        <h1 id="actionTitle">Register Application</h1>
+    </div>
+
+    <form id="clientForm" class="form active" method="POST" action="/apps">
+        <!-- Client ID -->
+        <label for="clientId">Client ID</label>
+        <input id="clientId" type="text" name="clientId" placeholder="Enter Client ID, Ex: com.client.app or my-next-app" required />
+
+        <!-- Client Secret -->
+        <label for="clientSecret">Client Secret</label>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <input style="width: 100%;" id="clientSecret" type="text" name="clientSecret" placeholder="Generate or enter secret" required />
+            <button type="button" id="generateSecret">Generate</button>
+        </div>
+
+        <!-- Scopes -->
+        <label>Scopes</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="scopes" value="openid"> openid</label>
+            <label><input type="checkbox" name="scopes" value="profile"> profile</label>
+        </div>
+        <br/>
+        <!-- Redirect URIs -->
+        <label for="redirectUris">Redirect URIs</label>
+        <textarea id="redirectUris" name="redirectUris" placeholder="Enter redirect URIs, one per line" rows="3" required></textarea>
+
+        <!-- Grant Types -->
+        <label>Grant Types</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="grantTypes" value="authorization_code"> authorization_code</label>
+            <label><input type="checkbox" name="grantTypes" value="refresh_token"> refresh_token</label>
+            <br/>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Status messages -->
+    <div id="status">
+        <p th:if="${successMessage}" th:text="${successMessage}" style="color: green;"></p>
+        <p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></p>
+    </div>
+</div>
+
+<script>
+    // Generate random secret
+    document.getElementById("generateSecret").addEventListener("click", function() {
+        const randomSecret = Array.from(window.crypto.getRandomValues(new Uint8Array(32)))
+            .map(b => b.toString(16).padStart(2, "0"))
+            .join("");
+        document.getElementById("clientSecret").value = randomSecret;
+    });
+</script>
+
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

@@ -15,22 +15,6 @@ function showStatus(message, isSuccess = true) {
   statusBox.className = isSuccess ? "success" : "error";
 }
 
-// Function to toggle forms
-function showForm(form) {
-  if (form === "login") {
-    loginTab.classList.add("active");
-    signupTab.classList.remove("active");
-    loginForm.classList.add("active");
-    signupForm.classList.remove("active");
-  } else {
-    signupTab.classList.add("active");
-    loginTab.classList.remove("active");
-    signupForm.classList.add("active");
-    loginForm.classList.remove("active");
-  }
-  statusBox.style.display = "none";
-}
-
 // Tab switching
 signupTab.addEventListener("click", () => showForm("signup"));
 loginTab.addEventListener("click", () => showForm("login"));
